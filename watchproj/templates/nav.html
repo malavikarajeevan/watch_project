@@ -1,0 +1,53 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">G-SHOCK</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shop:home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shop:product' %}">product</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false" style="color: white;">
+            Category
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'shop:home' %}"></a></li>
+            {% for link in links %}
+            <li><a class="dropdown-item" href="{{link.get_url}}">{{link.name}}</a></li>
+
+            {% endfor %}
+
+          </ul>
+        </li>
+
+
+
+        
+      </ul>
+      <form class="d-flex" role="search" action="{% url 'searchapp:searchproduct' %}" method="GET">
+        <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+        <a class=" me-4 pt-4" href="{% url 'cartapp:displaycart' %}"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path fill="white" d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg></a>
+      </form>
+      <div class="d-flex">
+        {% if user.is_authenticated %}
+
+        <span class="text-light me-3">{{user}}</span>
+        <a href="{% url 'auth:logout' %}" class="btn btn-outline-danger me-3" type="button" style="color: white;">Logout</a>
+        {% else %}
+        <a href="{% url 'auth:login' %}" class="btn btn-outline-success me-5" type="button" style="color: white;">Login</a>
+        <a href="{% url 'auth:register' %}" class="btn btn-outline-primary me-5" type="button" style="color: white;">Signup</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>

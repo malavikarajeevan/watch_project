@@ -1,0 +1,263 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if category %}
+<!-- <div class="container-fluid mb-3 justify-content-center" >
+    <h1 class="hed mt-5 mb-2 " >{{ category.name }}</h1>
+
+    <div class="image-container" style=" padding: 20px;">
+        <img class="can rounded-5" src="{{ category.image.url }}" style="margin-left: 35%;" width="30%" height="500" alt="">
+    </div>
+    <h5 class="des mt-4 mb-5">{{ category.desc }}</h5>
+</div> -->
+<!-- <div class="container-fluid">
+    <h1 class="hed mt-5 mb-2">Products in {{ category.name }}</h1>
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+        {% for product in products %}
+        <div class="col">
+            <div class="card border p-3 bg-body rounded mb-4">
+                <a href="{% url 'shop:details' product.id %}">
+                    <div class="image-container" style="background-color: #e2edf7; padding: 20px;">
+                        <img src="{{ product.image.url }}" class="card-img-top rounded" alt="{{ product.name }}">
+                    </div>
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">${{ product.price }}</p>
+                    <p class="card-text">{{ product.category }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div> -->
+{% else %}
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active text-center">
+            <p class="d-block w-100 mt-2 mb-0" alt="...">
+                <a>free shipping on watch orders</a>
+            </p>
+        </div>
+        
+        <div class="carousel-item text-center">
+            <p class="d-block w-100 mb-0 mt-2" alt="...">
+                <a>new collections</a>
+            </p>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="kk carousel-item active" data-bs-interval="10000">
+            <img src="../static/images/gprh1000-kv-1920x612.avif" class="d-block w-100 " alt="...">
+        </div>
+        <div class="kk carousel-item" data-bs-interval="2000">
+            <img src="../static/images/coexist-gab2100ct-1920x612.avif" class="d-block w-100 " alt="...">
+        </div>
+        <div class="kk carousel-item">
+            <img src="../static/images/cordura-blackband-1920x612.avif" class="d-block w-100 " alt="...">
+        </div>
+        <div class="kk carousel-item">
+            <img src="../static/images/gmap2100-cai-1920x612.avif" class="d-block w-100 " alt="...">
+        </div>
+        <div class="kk carousel-item">
+            <img src="../static/images/polychromatic-front-1920x612.avif" class="d-block w-100 " alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+
+
+
+
+
+<div class="container-fluid mt-4 mb-5" style="background-color: black;">
+  <div class="row">
+    <div class="col-md-6">
+      <video controls width="640" height="380">
+        <source src="../static/images/pexels-cottonbro-8571774 (Original).mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="col-md-6 mt-5 text-white">
+      <h2>Timeless Elegance</h2>
+      <h3>Discover Our Exquisite Collection of Watches.</h3>
+      <p>Elevate your style with our curated selection of premium watches. Crafted with precision and sophistication, each timepiece embodies the epitome of luxury and functionality.</p>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="container" style="text-decoration-line: underline;">
+  <h2>This Just In </h2>
+</div>
+
+
+
+
+
+
+{% endif %}
+
+
+
+<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+  <div class="carousel-inner " >
+    <div class="carousel-item active">
+      <div class="d-flex">
+        {% for product in products %}
+        <div class="col">
+          <div class="card h-100 rounded-0 border-0" style="background-color: white">
+            <a href="{% url 'shop:details' product.id %}">
+             
+                <img src="{{product.image.url}}" class="card-img-top rounded" alt="{{product.name}}">
+              
+            </a>
+            <div class="card-body text-center">
+              <h5 class="card-title">{{product.name}}</h5>
+              
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="carousel-item ">
+      <div class="d-flex">
+        {% for product in products %}
+        <div class="col">
+          <div class="card h-100 rounded-0 border-0" style="background-color: white">
+            <a href="{% url 'shop:details' product.id %}">
+             
+                <img src="{{product.image.url}}" class="card-img-top rounded" alt="{{product.name}}">
+              
+            </a>
+            <div class="card-body text-center">
+              <h5 class="card-title">{{product.name}}</h5>
+             
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="carousel-item ">
+      <div class="d-flex">
+        {% for product in products %}
+        <div class="col">
+          <div class="card h-100 rounded-0 border-0" style="background-color: white">
+            <a href="{% url 'shop:details' product.id %}">
+             
+                <img src="{{product.image.url}}" class="card-img-top rounded" alt="{{product.name}}">
+              
+            </a>
+            <div class="card-body text-center">
+              <h5 class="card-title">{{product.name}}</h5>
+             
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    
+
+     
+
+    
+   
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+  
+
+  
+
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel mb-4 ">
+    <div class="carousel-inner mt-4">
+        <div class="kk carousel-item active mb-4" data-bs-interval="10000">
+            <img src="../static/images/kk.png" class="d-block w-100 " style="height: 400px; " alt="...">
+        </div>
+    </div>
+  </div>
+  <!-- <div class="container">
+    <h1>shop featured collection</h1>
+  </div> -->
+  
+
+  <!-- <div class="container-fluid text-center mb-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <img class="img-fluid" src="../static/images/Moser.jpg" alt="Moser Watch">
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <img class="img-fluid" src="../static/images/watchhh.jpg" alt="Patek Philippe Watch">
+      </div>
+    </div>
+  </div>
+   
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="kk carousel-item active" data-bs-interval="10000">
+            <img src="../static/images/blck.png" class="d-block w-100" style="height: 400px;" alt="...">
+        </div>
+    </div>
+  </div> -->
+
+
+  <div class="container-fluid-center mt-3 mb-2" style="margin-left: 40px; margin-right: 40px;">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <h2>GLOBAL INVENTORY</h2>
+   <p>We're not a marketplace, we're the market leader. means we own every we sell, allowing us to set superior standards the globe. With in the United States, Hong Kong, Singapore, and beyond, our selection is ever-changing with thousands of luxury watches available at any given time.</p>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <h2>EXPERT SERVICE</h2>
+        <p>Our in-house team of Swiss-trained watchmakers and refinishers are among the best in the industry. From routine maintenance to heavy water damage, our team of experts provide full support with factory-sourced parts for first-class service to the secondary marketplace.</p>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <h2>OUR STORY</h2>
+        <h3>INSIDER INSIGHTS</h3>
+        <p>Behind the scenes, there's a team of over 160 watch-lovers ready to share their passion with you. Ask them anything, from watch history to the pulse of the market. We've got a team ready around the world to help you find your dream watch - and they're just a chat, email, or phone call away.</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+  
+
+  {% endblock%}

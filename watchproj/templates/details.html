@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid mb-3 justify-content-center bg-light d-flex">
+    <div class="row">
+        <!-- Product Image Column -->
+        <div class="col-md-6 my-4 ">
+            <div class="card rounded-2 bg-light ms-4 w-100 me-2 mb-4 mt-5" style="border: 0;">
+                <img src="{{data.image.url}}" class="card-img-top rounded-2 ms-2 mt-3" alt="...">
+                <div class="card-body"></div>
+            </div>
+        </div>
+
+        <!-- Product Details Column -->
+        <div class="col-md-6 mt-4 ">
+            <div class="card bg-body rounded mt-4" style="height: 40vh;">
+                <div class="card-body" >
+                    <h2>{{data.name}}</h2>
+                    <h3>${{data.price}}</h3>
+                    <!-- <label for="color">Color:</label>
+                    <select name="color" id="color" class="form-select">
+                        {% for color in data.colors.all %}
+                        <option value="{{ color.id }}">{{ color.name }}</option>
+                        {% endfor %}
+                    </select> -->
+
+                    <!-- <label for="size">Size:</label>
+                    <select name="size" id="size" class="form-select">
+                        {% for size in data.sizes.all %}
+                        <option value="{{ size.id }}">{{ size.name }}</option>
+                        {% endfor %}
+                    </select> -->
+
+                    <h5 class="mt-3">Category: {{data.category}}</h5>
+                    {% if data.stock >= 1 %}   
+                    <a href="{% url 'cartapp:addcart' data.id %}" type="button" class="btn btn-warning me-3 p-3">Add to cart</a>
+                    {% else %}
+                    <span><h3 class="out" style="color: green;">Out of stock</h3></span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

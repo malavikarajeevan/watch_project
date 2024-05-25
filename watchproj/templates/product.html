@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if category %}
+<div class="container-fluid mb-3  ">
+ <h1 class="hed mt-5 mb-2  " style="margin-left: 41%;" >{{category.name}}</h1>
+
+   <img class="can rounded-5" src="{{category.image.url}}" style="margin-left: 35%;" width="30%" height="500" alt="">
+ 
+ <h5 class="des mt-4 mb-5 text-center">{{category.desc}}</h5>
+</div>
+<div class="container-fluid">
+  <h1 class="hed mt-5 mb-2 " style="margin-left: 41%; width: 20%; font-family: Verdana, Geneva, Tahoma, sans-serif;">Products in {{ category.name }}</h1>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-4">
+    {% for product in products %}
+      <div class="col">
+        <div class="card h-100 rounded-0 border-0" style="background-color: rgb(234, 246, 246);">
+          <a href="{% url 'shop:details' product.id %}">
+           
+              <img src="{{product.image.url}}" class="card-img-top rounded" alt="{{product.name}}">
+            
+          </a>
+          <div class="card-body ">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">${{product.price}}</p>
+            <p class="card-text">{{product.category}}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+
+<div class="container text-center">
+  <h1>New Products</h1>
+</div>
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-4">
+    {% for product in products %}
+    <div class="col">
+      <div class="card h-100 rounded-0 border-0" style="background-color: rgb(234, 246, 246);">
+        <a href="{% url 'shop:details' product.id %}">
+          <img src="{{ product.image.url }}" class="card-img-top"   alt="{{ product.name }}">
+        </a>
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">${{ product.price }}</p>
+          <p class="card-text">{{ product.category }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endif %}
+{% endblock %}
